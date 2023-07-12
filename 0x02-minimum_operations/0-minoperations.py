@@ -1,32 +1,30 @@
 #!/usr/bin/python3
 """
-    Method that calculates the fewest number of operations needed,
-    to result in exactly n H characters in the file.
+    Method that calculate the fewest number of operations.
 """
 
 
 def minOperations(n):
-    """ 
-        Calculates the fewest number of operations needed
-        to result in exactly n H characters in the file
+    """
+        calculate fewest number of operation
 
         Args:
-            n: repetitions of H
+             n: repetition of H
 
         Returns:
-            number of operations (Copy & Paste) to reach n Hs
+            number of operations(copy all & paste)
     """
+
+    if n <= 1:
+        return 0
+
     operations = 0
-    summation = 1
-    carrier = 0
+    factors = 2
 
-    while summation < n:
-        if n % summation == 0:
-            carrier = summation
-            summation *= 2
-            operations += 1
+    while factors <= n:
+        if n % factors == 0:
+            operations += factors
+            n //= factors
         else:
-            summation += carrier
-        operations += 1
-
+            factors += 1
     return operations
